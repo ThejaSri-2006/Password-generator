@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LockBox | Secure Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+
+    <main class="app-container">
+        <header>
+            <h1>LockBox</h1>
+            <p>Generate secure passwords instantly.</p>
+        </header>
+
+        <div class="glass-card">
+            <!-- Output Section -->
+            <div class="output-container">
+                <input type="text" id="password-output" placeholder="P4$sW0rD!" readonly>
+                <button id="copy-btn" aria-label="Copy to Clipboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls">
+                <div class="length-control">
+                    <label for="length-slider">Length: <span id="length-val">16</span></label>
+                    <input type="range" id="length-slider" min="6" max="32" value="16">
+                </div>
+
+                <div class="options-grid">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="uppercase" checked>
+                        <span class="checkmark"></span>
+                        Uppercase
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="lowercase" checked>
+                        <span class="checkmark"></span>
+                        Lowercase
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="numbers" checked>
+                        <span class="checkmark"></span>
+                        Numbers
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="symbols" checked>
+                        <span class="checkmark"></span>
+                        Symbols
+                    </label>
+                </div>
+            </div>
+
+            <button id="generate-btn">Generate Password</button>
+        </div>
+    </main>
+
+    <div id="toast">Copied to clipboard!</div>
+    <script src="app.js"></script>
+</body>
+
+</html>

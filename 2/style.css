@@ -1,0 +1,270 @@
+:root {
+    --bg-dark: #050505;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-primary: #00ff9d;
+    --neon-secondary: #00b8ff;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --font-main: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
+    z-index: -1;
+}
+
+.bg-gradient::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: var(--neon-secondary);
+    filter: blur(150px);
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+.bg-gradient::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    background: var(--neon-primary);
+    filter: blur(150px);
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    background: linear-gradient(to right, var(--neon-primary), var(--neon-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Output Area */
+.output-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    transition: border-color 0.3s;
+}
+
+.output-container:focus-within {
+    border-color: var(--neon-primary);
+}
+
+#password-output {
+    background: transparent;
+    border: none;
+    color: var(--neon-primary);
+    font-size: 1.5rem;
+    flex: 1;
+    font-family: 'Space Grotesk', monospace;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+#copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+#copy-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Controls */
+.controls {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.length-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--neon-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--neon-primary);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-main);
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.checkbox-container:hover input~.checkmark {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--neon-secondary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Generate Button */
+#generate-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#generate-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 5px 20px rgba(0, 255, 157, 0.3);
+}
+
+#generate-btn:active {
+    transform: translateY(0);
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text-main);
+    color: black;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+#toast.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
